@@ -86,7 +86,7 @@ export default function DonutChart({
       {title && (
         <CardHeader
           title={
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <Typography variant="body1" fontWeight={500} sx={{ fontSize: `${titleFontSize}px` }}>
                 {title}
               </Typography>
@@ -97,44 +97,47 @@ export default function DonutChart({
                       fontSize: 16,
                       color: 'rgba(0,0,0,0.6)',
                       cursor: 'pointer',
+                      marginLeft: '-8px',
                     }}
                   />
                 </Tooltip>
               )}
+              {showRolesDropdown && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    cursor: 'pointer',
+                    padding: '4px 8px',
+                    marginLeft: '-8px',
+                    '&:hover': {
+                      backgroundColor: 'rgba(0,0,0,0.04)',
+                      borderRadius: 1,
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      color: 'primary.main',
+                    }}
+                  >
+                    All Roles
+                  </Typography>
+                  <KeyboardArrowDownIcon
+                    sx={{
+                      fontSize: 18,
+                      color: 'rgba(0,0,0,0.6)',
+                    }}
+                  />
+                </Box>
+              )}
             </Box>
           }
           action={
-            showRolesDropdown ? (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.5,
-                  cursor: 'pointer',
-                  padding: '4px 8px',
-                  '&:hover': {
-                    backgroundColor: 'rgba(0,0,0,0.04)',
-                    borderRadius: 1,
-                  },
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontSize: '13px',
-                    fontWeight: 500,
-                    color: 'primary.main',
-                  }}
-                >
-                  All Roles
-                </Typography>
-                <KeyboardArrowDownIcon
-                  sx={{
-                    fontSize: 18,
-                    color: 'rgba(0,0,0,0.6)',
-                  }}
-                />
-              </Box>
-            ) : showMenuIcon ? (
+            showMenuIcon && !showRolesDropdown ? (
               <IconButton aria-label="Menu" size="small">
                 <MoreVertIcon />
               </IconButton>
