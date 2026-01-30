@@ -33,6 +33,8 @@ export default function UsersByLanguage({ config }: UsersByLanguageProps) {
       title="Users by Language"
       titleFontSize={14}
       showLegend={true}
+      showMenuIcon={false}
+      showRolesDropdown={true}
     />
   );
 }

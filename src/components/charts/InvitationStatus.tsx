@@ -33,6 +33,8 @@ export default function InvitationStatus({ config }: InvitationStatusProps) {
       title="Invitation Status"
       titleFontSize={14}
       showLegend={true}
+      showMenuIcon={false}
+      showRolesDropdown={true}
     />
   );
 }

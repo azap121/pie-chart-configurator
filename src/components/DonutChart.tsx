@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { Box, Card, CardHeader, CardContent, Typography, IconButton } from '@mui/material';
+import { Box, Card, CardHeader, CardContent, Typography, IconButton, Button } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { DonutChartProps } from '@/types/chart';
 
 // Custom Legend Item component
@@ -53,6 +54,8 @@ export default function DonutChart({
   showLegend = true,
   borderedLegend = false,
   legendMaxHeight = 180,
+  showMenuIcon = true,
+  showRolesDropdown = false,
 }: DonutChartProps) {
   // Calculate the centre position based on chart dimensions
   const centreX = width / 2;
@@ -86,9 +89,27 @@ export default function DonutChart({
             </Typography>
           }
           action={
-            <IconButton aria-label="Menu" size="small">
-              <MoreVertIcon />
-            </IconButton>
+            showRolesDropdown ? (
+              <Button
+                variant="text"
+                size="small"
+                endIcon={<KeyboardArrowDownIcon />}
+                sx={{
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  color: 'primary.main',
+                  padding: '4px 8px',
+                  minWidth: 'auto',
+                }}
+              >
+                All Roles
+              </Button>
+            ) : showMenuIcon ? (
+              <IconButton aria-label="Menu" size="small">
+                <MoreVertIcon />
+              </IconButton>
+            ) : null
           }
           sx={{ padding: '12px 16px 8px' }}
         />
