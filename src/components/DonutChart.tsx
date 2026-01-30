@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { Box, Card, CardHeader, CardContent, Typography, IconButton, Button } from '@mui/material';
+import { Box, Card, CardHeader, CardContent, Typography, IconButton, Tooltip } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { DonutChartProps } from '@/types/chart';
 
 // Custom Legend Item component
@@ -56,6 +57,7 @@ export default function DonutChart({
   legendMaxHeight = 180,
   showMenuIcon = true,
   showRolesDropdown = false,
+  infoTooltip,
 }: DonutChartProps) {
   // Calculate the centre position based on chart dimensions
   const centreX = width / 2;
@@ -84,27 +86,54 @@ export default function DonutChart({
       {title && (
         <CardHeader
           title={
-            <Typography variant="body1" fontWeight={500} sx={{ fontSize: `${titleFontSize}px` }}>
-              {title}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Typography variant="body1" fontWeight={500} sx={{ fontSize: `${titleFontSize}px` }}>
+                {title}
+              </Typography>
+              {infoTooltip && (
+                <Tooltip title={infoTooltip} arrow>
+                  <InfoOutlinedIcon
+                    sx={{
+                      fontSize: 16,
+                      color: 'rgba(0,0,0,0.6)',
+                      cursor: 'pointer',
+                    }}
+                  />
+                </Tooltip>
+              )}
+            </Box>
           }
           action={
             showRolesDropdown ? (
-              <Button
-                variant="text"
-                size="small"
-                endIcon={<KeyboardArrowDownIcon />}
+              <Box
                 sx={{
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  textTransform: 'none',
-                  color: 'primary.main',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.5,
+                  cursor: 'pointer',
                   padding: '4px 8px',
-                  minWidth: 'auto',
+                  '&:hover': {
+                    backgroundColor: 'rgba(0,0,0,0.04)',
+                    borderRadius: 1,
+                  },
                 }}
               >
-                All Roles
-              </Button>
+                <Typography
+                  sx={{
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    color: 'primary.main',
+                  }}
+                >
+                  All Roles
+                </Typography>
+                <KeyboardArrowDownIcon
+                  sx={{
+                    fontSize: 18,
+                    color: 'rgba(0,0,0,0.6)',
+                  }}
+                />
+              </Box>
             ) : showMenuIcon ? (
               <IconButton aria-label="Menu" size="small">
                 <MoreVertIcon />

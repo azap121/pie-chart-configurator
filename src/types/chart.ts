@@ -34,6 +34,7 @@ export interface DonutChartProps {
   legendMaxHeight?: number;  // Max height for scrollable legend
   showMenuIcon?: boolean;    // Show the three-dot menu icon (default true)
   showRolesDropdown?: boolean; // Show "All Roles" dropdown text with chevron
+  infoTooltip?: string;      // Tooltip text for info icon next to title
 }
 
 // Chart controls props

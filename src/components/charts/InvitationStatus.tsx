@@ -35,6 +35,7 @@ export default function InvitationStatus({ config }: InvitationStatusProps) {
       showLegend={true}
       showMenuIcon={false}
       showRolesDropdown={true}
+      infoTooltip="Shows all Draft, Invited, Expired and Active invitations to your project"
     />
   );
 }

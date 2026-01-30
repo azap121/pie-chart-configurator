@@ -35,6 +35,7 @@ export default function UsersByLanguage({ config }: UsersByLanguageProps) {
       showLegend={true}
       showMenuIcon={false}
       showRolesDropdown={true}
+      infoTooltip="Shows the default language of active users who have access to your project"
     />
   );
 }
